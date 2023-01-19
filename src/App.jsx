@@ -5,7 +5,6 @@ import "./App.css";
 import InputName from "./assets/components/InputName";
 import Pokedex from "./assets/components/Pokedex";
 import PokedexDetail from "./assets/components/PokedexDetail";
-import userNameSlice from "./store/slices/userName.slice";
 
 function App() {
   return (
