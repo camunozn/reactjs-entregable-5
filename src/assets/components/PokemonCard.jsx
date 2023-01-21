@@ -18,7 +18,11 @@ const PokemonCard = ({ url }) => {
     >
       <h4>{pokemon?.name}</h4>
       <img
-        src={pokemon.sprites?.other.dream_world.front_default}
+        src={
+          pokemon.sprites?.other.dream_world.front_default
+            ? pokemon.sprites?.other.dream_world.front_default
+            : pokemon.sprites?.other.home.front_default
+        }
         alt="Pokemon image"
       />
     </div>
