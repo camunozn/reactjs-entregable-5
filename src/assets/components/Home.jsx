@@ -17,7 +17,7 @@ const Home = () => {
         </div>
         <div className="home-welcome">
           <h1 className="heading-primary">Hello trainer!</h1>
-          <p>Type your name to begin:</p>
+          <p>Type your name to start the journey:</p>
         </div>
         <div className="home-input">
           <input
@@ -33,7 +33,7 @@ const Home = () => {
               navigate('/pokedex');
             }}
           >
-            Let's Start
+            Let's begin
           </button>
         </div>
       </section>
