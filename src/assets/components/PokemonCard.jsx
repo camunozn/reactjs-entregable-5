@@ -11,20 +11,23 @@ const PokemonCard = ({ url }) => {
     axios.get(url).then(res => setPokemon(res.data));
   }, []);
 
+  const pokemonImg = pokemon.sprites?.other.dream_world.front_default
+    ? pokemon.sprites?.other.dream_world.front_default
+    : pokemon.sprites?.other.home.front_default;
+
   return (
     <div
       className="pokemon-card"
       onClick={() => navigate(`/pokedex/${pokemon.id}`)}
     >
-      <h4>{pokemon?.name}</h4>
-      <img
-        src={
-          pokemon.sprites?.other.dream_world.front_default
-            ? pokemon.sprites?.other.dream_world.front_default
-            : pokemon.sprites?.other.home.front_default
-        }
-        alt="Pokemon image"
-      />
+      <div className="card-content">
+        <div className="content-img">
+          <img className="pokemon-img" src={pokemonImg} alt="Pokemon image" />
+        </div>
+        <div className="content-data">
+          <h3 className="heading-tertiary">{pokemon?.name}</h3>
+        </div>
+      </div>
     </div>
   );
 };

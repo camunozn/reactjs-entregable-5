@@ -15,18 +15,15 @@ const PokemonDetail = () => {
       });
   }, []);
 
+  const pokemonImg = pokemon.sprites?.other.dream_world.front_default
+    ? pokemon.sprites?.other.dream_world.front_default
+    : pokemon.sprites?.other.home.front_default;
+
   return (
     <div>
       <h2>PokemonDetail</h2>
       <h2>{pokemon?.name}</h2>
-      <img
-        src={
-          pokemon.sprites?.other.dream_world.front_default
-            ? pokemon.sprites?.other.dream_world.front_default
-            : pokemon.sprites?.other.home.front_default
-        }
-        alt=""
-      />
+      <img src={pokemonImg} alt="" />
     </div>
   );
 };
