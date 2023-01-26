@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import defaultImg from '../img/default-img.png';
 
 const PokemonDetail = () => {
   const { id } = useParams();
@@ -17,7 +18,7 @@ const PokemonDetail = () => {
 
   const pokemonImg = pokemon.sprites?.other.dream_world.front_default
     ? pokemon.sprites?.other.dream_world.front_default
-    : pokemon.sprites?.other.home.front_default;
+    : defaultImg;
 
   return (
     <div>

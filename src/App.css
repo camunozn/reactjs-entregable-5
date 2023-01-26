@@ -57,7 +57,84 @@ Medium: 11px
   --shadow-cards: 0 1.2rem 2.4rem rgba(0, 0, 0, 0.35);
   --shadow-button: 0 0.6rem 0.8rem rgba(0, 0, 0, 0.2);
   --shadow-button-hover: 0 0.6rem 1rem rgba(0, 0, 0, 0.2);
+  --linear-gradient-normal: linear-gradient(
+    to bottom,
+    #7c3f4c,
+    #bc6b7c,
+    #7c3f4c
+  );
+  --linear-gradient-fighting: linear-gradient(
+    to bottom,
+    #96402a,
+    #cb735d,
+    #96402a
+  );
+  --linear-gradient-flying: linear-gradient(
+    to bottom,
+    #95acba,
+    #f8fbfd,
+    #95acba
+  );
+  --linear-gradient-poison: linear-gradient(
+    to bottom,
+    #5b3184,
+    #a564e3,
+    #5b3184
+  );
+  --linear-gradient-ground: linear-gradient(
+    to bottom,
+    #654008,
+    #d69638,
+    #654008
+  );
+  --linear-gradient-rock: linear-gradient(to bottom, #7e7e7e, #d3d3d3, #7e7e7e);
+  --linear-gradient-bug: linear-gradient(to bottom, #3bb039, #aaffa8, #3bb039);
+  --linear-gradient-ghost: linear-gradient(
+    to bottom,
+    #323569,
+    #787dda,
+    #454aa8
+  );
+  --linear-gradient-steel: linear-gradient(
+    to bottom,
+    #5e736c,
+    #a8a8a8,
+    #5e736c
+  );
   --linear-gradient-fire: linear-gradient(to bottom, #e35825, #e8ae1b, #e35825);
+  --linear-gradient-water: linear-gradient(
+    to bottom,
+    #133258,
+    #1479fb,
+    #133258
+  );
+  --linear-gradient-grass: linear-gradient(
+    to bottom,
+    #7ec6c5,
+    #cae099,
+    #7ec6c5
+  );
+  --linear-gradient-electric: linear-gradient(
+    to bottom,
+    #0c1395,
+    #7075d9,
+    #0c1395
+  );
+  --linear-gradient-psychic: linear-gradient(to bottom);
+  --linear-gradient-ice: linear-gradient(to bottom, #64cbf5, #bdebfe, #64cbf5);
+  --linear-gradient-dragon: linear-gradient(
+    to bottom,
+    #478a93,
+    #a2bec1,
+    #478a93
+  );
+  --linear-gradient-dark: linear-gradient(to bottom, #030706, #5a5e5d, #030706);
+  --linear-gradient-fairy: linear-gradient(
+    to bottom,
+    #971b45,
+    #cd7d98,
+    #971b45
+  );
 }
 
 * {
@@ -314,7 +391,6 @@ p {
 .pokemon-card {
   text-align: center;
   height: 40rem;
-  background-image: var(--linear-gradient-fire);
   box-shadow: var(--shadow-cards);
   padding: 3.2rem 0.8rem 0.8rem 0.8rem;
   z-index: -2;
@@ -325,7 +401,7 @@ p {
 }
 
 .content-img {
-  height: 50%;
+  height: 40%;
   position: relative;
 }
 
@@ -333,10 +409,10 @@ p {
   content: '';
   position: absolute;
   display: block;
-  top: 60%;
+  top: 65%;
   left: 0;
   width: 100%;
-  height: 45%;
+  height: 40%;
   background-color: var(--color-white);
   z-index: -1;
 }
@@ -346,18 +422,103 @@ p {
 }
 
 .content-data {
-  height: 50%;
+  height: 60%;
   background-color: var(--color-white);
   padding: 1.6rem 0;
 }
 
 .pokemon-card .heading-tertiary {
-  font-weight: 400;
+  font-weight: 500;
   letter-spacing: -0.5px;
   text-transform: capitalize;
   color: transparent;
-  background-image: var(--linear-gradient-fire);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+.pokemon-type-normal {
+  background-image: var(--linear-gradient-normal);
+}
+
+.pokemon-type-fighting {
+  background-image: var(--linear-gradient-fighting);
+}
+
+.pokemon-type-flying {
+  background-image: var(--linear-gradient-flying);
+}
+
+.pokemon-type-poison {
+  background-image: var(--linear-gradient-poison);
+}
+
+.pokemon-type-ground {
+  background-image: var(--linear-gradient-ground);
+}
+
+.pokemon-type-rock {
+  background-image: var(--linear-gradient-rock);
+}
+
+.pokemon-type-bug {
+  background-image: var(--linear-gradient-bug);
+}
+
+.pokemon-type-ghost {
+  background-image: var(--linear-gradient-ghost);
+}
+
+.pokemon-type-steel {
+  background-image: var(--linear-gradient-steel);
+}
+
+.pokemon-type-fire {
+  background-image: var(--linear-gradient-fire);
+}
+
+.pokemon-type-water {
+  background-image: var(--linear-gradient-water);
+}
+
+.pokemon-type-grass {
+  background-image: var(--linear-gradient-grass);
+}
+
+.pokemon-type-electric {
+  background-image: var(--linear-gradient-electric);
+}
+
+.pokemon-type-psychic {
+  background-image: var(--linear-gradient-psychic);
+}
+
+.pokemon-type-ice {
+  background-image: var(--linear-gradient-ice);
+}
+
+.pokemon-type-dragon {
+  background-image: var(--linear-gradient-dragon);
+}
+
+.pokemon-type-dark {
+  background-image: var(--linear-gradient-dark);
+}
+
+.pokemon-type-fairy {
+  background-image: var(--linear-gradient-fairy);
+}
+
+/**************************/
+/* QUERIES */
+/**************************/
+
+/**************************/
+/* BELOW 1024px (Portrait Tablets) */
+/**************************/
+@media (max-width: 64em) {
+  html {
+    /* 8px / 16px */
+    font-size: 50%;
+  }
 }

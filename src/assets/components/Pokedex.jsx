@@ -13,13 +13,14 @@ const Pokedex = () => {
 
   const navigate = useNavigate();
 
+  const allPokemonsUrl = 'https://pokeapi.co/api/v2/pokemon/?offset=0&limit=20';
+  const allTypesUrl = 'https://pokeapi.co/api/v2/type/?offset=0&limit=20';
+
   useEffect(() => {
-    axios
-      .get('https://pokeapi.co/api/v2/pokemon/?offset=0&limit=20')
-      .then(res => setPokemons(res.data.results));
+    axios.get(allPokemonsUrl).then(res => setPokemons(res.data.results));
 
     axios
-      .get('https://pokeapi.co/api/v2/type/?offset=0&limit=20')
+      .get(allTypesUrl)
       .then(res => setPokemonTypes(res.data.results.slice(0, -2)));
   }, []);
 
@@ -28,7 +29,11 @@ const Pokedex = () => {
   };
 
   const filterType = e => {
-    axios.get(e.target.value).then(res => setPokemons(res.data.pokemon));
+    axios
+      .get(e.target.value)
+      .then(res =>
+        setPokemons(res.data.pokemon ? res.data.pokemon : res.data.results)
+      );
   };
 
   return (
@@ -49,6 +54,7 @@ const Pokedex = () => {
                   className="input search-input"
                   type="text"
                   value={searchedPokemon}
+                  placeholder="Search a pokemon by name or id"
                   onChange={e => setSearchedPokemon(e.target.value)}
                 />
                 <button
@@ -60,6 +66,7 @@ const Pokedex = () => {
               </div>
               <div className="filter-box">
                 <select className="select filter-select" onChange={filterType}>
+                  <option value={allPokemonsUrl}>All types</option>
                   {pokemonTypes?.map(type => (
                     <option value={type.url} key={type.name}>
                       {type.name}
