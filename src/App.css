@@ -71,9 +71,9 @@ Medium: 11px
   );
   --linear-gradient-flying: linear-gradient(
     to bottom,
-    #95acba,
-    #f8fbfd,
-    #95acba
+    #461111,
+    #a13333,
+    #461111
   );
   --linear-gradient-poison: linear-gradient(
     to bottom,
@@ -120,7 +120,12 @@ Medium: 11px
     #7075d9,
     #0c1395
   );
-  --linear-gradient-psychic: linear-gradient(to bottom);
+  --linear-gradient-psychic: linear-gradient(
+    to bottom,
+    #003548,
+    #33687b,
+    #003548
+  );
   --linear-gradient-ice: linear-gradient(to bottom, #64cbf5, #bdebfe, #64cbf5);
   --linear-gradient-dragon: linear-gradient(
     to bottom,
