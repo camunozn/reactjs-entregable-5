@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { changeUserName } from '../../store/slices/userName.slice';
+import Footer from '../components/Footer';
 import pokedexImg from '../img/pokedex_title.png';
-import Footer from './Footer';
 
 const Home = () => {
   const [user, setUser] = useState('');

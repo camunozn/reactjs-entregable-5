@@ -1,10 +1,8 @@
-import { useState } from 'react';
-import { useSelector } from 'react-redux';
 import { HashRouter, Route, Routes } from 'react-router-dom';
-import Home from './assets/components/Home';
-import Pokedex from './assets/components/Pokedex';
-import PokemonDetail from './assets/components/PokemonDetail';
-import ProtectedRoutes from './assets/components/ProtectedRoutes';
+import Home from './assets/views/Home';
+import Pokedex from './assets/views/Pokedex';
+import PokemonDetail from './assets/views/PokemonDetail';
+import ProtectedRoutes from './assets/views/ProtectedRoutes';
 import './App.css';
 
 function App() {

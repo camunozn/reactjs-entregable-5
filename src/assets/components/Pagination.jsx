@@ -34,22 +34,54 @@ const Pagination = ({ pokemons }) => {
         <i className="fa-solid fa-left-long"></i>
       </button>
       <ul className="pagination-pages">
-        {pagesArr.map(page => {
-          if (page <= currentPage + 1 && page >= currentPage - 1) {
-            return (
-              <li key={page}>
-                <button
-                  className={`btn btn--pagination ${
-                    page === currentPage ? 'btn--pagination--selected' : ''
-                  }`}
-                  onClick={() => changePage(page)}
-                >
-                  {page}
-                </button>
-              </li>
-            );
-          }
-        })}
+        <li>
+          <button
+            className={`btn btn--pagination ${
+              currentPage <= 2 ? 'hidden' : ''
+            }`}
+            onClick={() => changePage(currentPage - 2)}
+          >
+            {currentPage - 2}
+          </button>
+        </li>
+        <li>
+          <button
+            className={`btn btn--pagination ${
+              currentPage === 1 ? 'hidden' : ''
+            }`}
+            onClick={() => changePage(currentPage - 1)}
+          >
+            {currentPage - 1}
+          </button>
+        </li>
+        <li>
+          <button
+            className="btn btn--pagination btn--pagination--selected"
+            onClick={() => changePage(currentPage)}
+          >
+            {currentPage}
+          </button>
+        </li>
+        <li>
+          <button
+            className={`btn btn--pagination ${
+              currentPage === totalPages ? 'hidden' : ''
+            }`}
+            onClick={() => changePage(currentPage + 1)}
+          >
+            {currentPage + 1}
+          </button>
+        </li>
+        <li>
+          <button
+            className={`btn btn--pagination ${
+              currentPage >= totalPages - 1 ? 'hidden' : ''
+            }`}
+            onClick={() => changePage(currentPage + 2)}
+          >
+            {currentPage + 2}
+          </button>
+        </li>
       </ul>
       <button
         className="btn btn--pagination btn--pagination--arrows"

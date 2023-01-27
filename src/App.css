@@ -50,11 +50,13 @@ Medium: 11px
   --color-text-primary: #fff;
   --color-text-secondary: #302f2f;
   --color-text-tertiary: #dd1a1a /* #fe1936 */;
+  --color-text-quaternary: #888;
   --color-button-primary: #dd1a1a /* #d93f3f */;
   --color-gray-lighter: #aaa;
   --color-white: #fff;
   --shadow-boxes: 0 0.6rem 1.2rem rgba(0, 0, 0, 0.1);
   --shadow-cards: 0 1.2rem 2.4rem rgba(0, 0, 0, 0.35);
+  --shadow-cards-hover: 0 1.6rem 3.2rem rgba(0, 0, 0, 0.3);
   --shadow-button: 0 0.6rem 0.8rem rgba(0, 0, 0, 0.2);
   --shadow-button-hover: 0 0.6rem 1rem rgba(0, 0, 0, 0.2);
   --linear-gradient-normal: linear-gradient(
@@ -178,8 +180,9 @@ p {
 
 .heading-primary,
 .heading-secondary,
-.heading-tertiary {
-  margin-bottom: 1.6rem;
+.heading-tertiary,
+.heading-quaternary {
+  margin-bottom: 1.2rem;
 }
 
 .heading-primary {
@@ -193,6 +196,13 @@ p {
 
 .heading-tertiary {
   font-size: 2.4rem;
+}
+
+.heading-quaternary {
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--color-text-quaternary);
+  text-transform: uppercase;
 }
 
 .btn {
@@ -225,6 +235,10 @@ p {
 .input:focus,
 .select:focus {
   outline-color: var(--color-gray-lighter);
+}
+
+.hidden {
+  visibility: hidden;
 }
 
 /*************************/
@@ -399,7 +413,13 @@ p {
   height: 40rem;
   box-shadow: var(--shadow-cards);
   padding: 3.2rem 0.8rem 0.8rem 0.8rem;
-  z-index: -2;
+  cursor: pointer;
+  transition: all 0.4s ease;
+}
+
+.pokemon-card:hover {
+  transform: translateY(-1rem);
+  box-shadow: var(--shadow-cards-hover);
 }
 
 .card-content {
@@ -420,11 +440,13 @@ p {
   width: 100%;
   height: 40%;
   background-color: var(--color-white);
-  z-index: -1;
+  z-index: 1;
 }
 
 .pokemon-img {
   height: 100%;
+  position: relative;
+  z-index: 2;
 }
 
 .content-data {
@@ -433,9 +455,40 @@ p {
   padding: 1.6rem 0;
 }
 
-.pokemon-card .heading-tertiary {
+.data-heading {
+  height: 40%;
+}
+
+.data-heading .heading-tertiary {
   font-weight: 500;
   letter-spacing: -0.5px;
+  text-transform: capitalize;
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.data-types {
+  font-size: 1.4rem;
+  font-weight: 400;
+  letter-spacing: -0.5px;
+  text-transform: capitalize;
+  width: 100%;
+  margin-bottom: 0.4rem;
+}
+
+.data-main {
+  height: 60%;
+  display: grid;
+  align-items: stretch;
+  justify-content: space-between;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.data-number {
+  font-size: 1.6rem;
+  font-weight: 700;
   text-transform: capitalize;
   color: transparent;
   background-clip: text;

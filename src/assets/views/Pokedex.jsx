@@ -3,9 +3,9 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { changeCurrentPage } from '../../store/slices/currentPage.slice';
-import Header from './Header';
-import Pagination from './Pagination';
-import PokemonCard from './PokemonCard';
+import Header from '../components/Header';
+import Pagination from '../components/Pagination';
+import PokemonCard from '../components/PokemonCard';
 
 const Pokedex = () => {
   const userName = useSelector(state => state.userName);
@@ -28,7 +28,7 @@ const Pokedex = () => {
     axios.get(allPokemonsUrl).then(res => {
       const data = res.data.results;
       setPokemons(data);
-      paginate(data, 1);
+      paginate(data, currentPage);
     });
 
     axios
