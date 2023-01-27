@@ -375,6 +375,7 @@ p {
   box-shadow: var(--shadow-boxes);
   border-style: none;
   padding: 0 1rem;
+  cursor: pointer;
 }
 
 /**************************/
@@ -384,7 +385,7 @@ p {
   margin-bottom: 9.6rem;
 }
 
-.pokemon-cards {
+.cards-display {
   display: grid;
   align-items: center;
   justify-content: center;
@@ -512,6 +513,56 @@ p {
 
 .pokemon-type-fairy {
   background-image: var(--linear-gradient-fairy);
+}
+
+/*************************/
+/* PAGINATION COMPONENT */
+/*************************/
+.cards-pagination {
+  margin-bottom: 4.8rem;
+}
+
+.pagination,
+.pagination-pages {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.pagination-pages.flex {
+  flex-wrap: wrap;
+}
+
+.pagination-pages li {
+  list-style: none;
+}
+
+.btn--pagination {
+  min-width: 4rem;
+  min-height: 4rem;
+  color: var(--color-text-secondary);
+  background-color: var(--color-white);
+  padding: 1rem;
+}
+
+.btn--pagination--arrows {
+  color: var(--color-text-primary);
+  background-color: var(--color-primary);
+}
+
+.btn--pagination--selected {
+  color: var(--color-text-primary);
+  background-color: var(--color-primary);
+}
+
+.btn--pagination:disabled,
+.btn--pagination:disabled:hover {
+  color: var(--color-text-secondary);
+  background-color: var(--color-gray-lighter);
+}
+.btn--pagination:disabled:hover {
+  transform: translateY(0);
 }
 
 /**************************/

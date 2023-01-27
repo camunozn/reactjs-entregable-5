@@ -1,23 +1,35 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { changeCurrentPage } from '../../store/slices/currentPage.slice';
 import Header from './Header';
+import Pagination from './Pagination';
 import PokemonCard from './PokemonCard';
 
 const Pokedex = () => {
   const userName = useSelector(state => state.userName);
+  const currentPage = useSelector(state => state.currentPage);
+  const resultsPerPage = useSelector(state => state.resultsPerPage);
+
   const [pokemons, setPokemons] = useState([]);
+  const [pokemonsCurrPage, setPokemonsCurrPage] = useState([]);
   const [pokemonTypes, setPokemonTypes] = useState([]);
   const [searchedPokemon, setSearchedPokemon] = useState('');
 
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const allPokemonsUrl = 'https://pokeapi.co/api/v2/pokemon/?offset=0&limit=20';
+  const allPokemonsUrl =
+    'https://pokeapi.co/api/v2/pokemon/?offset=0&limit=1279';
   const allTypesUrl = 'https://pokeapi.co/api/v2/type/?offset=0&limit=20';
 
   useEffect(() => {
-    axios.get(allPokemonsUrl).then(res => setPokemons(res.data.results));
+    axios.get(allPokemonsUrl).then(res => {
+      const data = res.data.results;
+      setPokemons(data);
+      paginate(data, 1);
+    });
 
     axios
       .get(allTypesUrl)
@@ -29,11 +41,22 @@ const Pokedex = () => {
   };
 
   const filterType = e => {
-    axios
-      .get(e.target.value)
-      .then(res =>
-        setPokemons(res.data.pokemon ? res.data.pokemon : res.data.results)
-      );
+    dispatch(changeCurrentPage(1));
+    axios.get(e.target.value).then(res => {
+      const data = res.data.pokemon ? res.data.pokemon : res.data.results;
+      setPokemons(data);
+      paginate(data, 1);
+    });
+  };
+
+  useEffect(() => {
+    paginate(pokemons, currentPage);
+  }, [currentPage]);
+
+  const paginate = (pokemons, currPage) => {
+    const lastResultIndex = currPage * resultsPerPage;
+    const firstResultIndex = lastResultIndex - resultsPerPage;
+    setPokemonsCurrPage(pokemons.slice(firstResultIndex, lastResultIndex));
   };
 
   return (
@@ -77,8 +100,11 @@ const Pokedex = () => {
             </div>
           </section>
           <section className="section-cards">
-            <div className="pokemon-cards">
-              {pokemons.map(pokemon => {
+            <div className="cards-pagination">
+              <Pagination pokemons={pokemons} />
+            </div>
+            <div className="cards-display">
+              {pokemonsCurrPage.map(pokemon => {
                 return (
                   <PokemonCard
                     key={pokemon.url ? pokemon.url : pokemon.pokemon.url}
