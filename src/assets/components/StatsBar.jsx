@@ -6,7 +6,7 @@ const StatsBar = ({ title, value, typeClass }) => {
   return (
     <div className="stats-bar">
       <h3 className="heading-tertiary">{title}</h3>
-      <p className="bar-value">{`${value}/150`}</p>
+      <p className="bar-value">{`${value}/100`}</p>
       <div className="bar-container">
         <span
           className={`bar-fill ${typeClass}`}
