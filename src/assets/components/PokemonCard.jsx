@@ -62,7 +62,7 @@ const PokemonCard = ({ url }) => {
             <div>
               <h4 className="heading-quaternary">SPEED</h4>
               <p className={`data-number ${typeClass}`}>
-                {pokemon.stats?.[3].base_stat}
+                {pokemon.stats?.[5].base_stat}
               </p>
             </div>
           </div>

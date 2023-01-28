@@ -52,96 +52,40 @@ Medium: 11px
   --color-text-tertiary: #dd1a1a /* #fe1936 */;
   --color-text-quaternary: #888;
   --color-button-primary: #dd1a1a /* #d93f3f */;
-  --color-gray-lighter: #aaa;
+  --color-gray-darker: #aaa;
+  --color-gray-lighter: #f5f5f5;
   --color-white: #fff;
   --shadow-boxes: 0 0.6rem 1.2rem rgba(0, 0, 0, 0.1);
   --shadow-cards: 0 1.2rem 2.4rem rgba(0, 0, 0, 0.35);
   --shadow-cards-hover: 0 1.6rem 3.2rem rgba(0, 0, 0, 0.3);
   --shadow-button: 0 0.6rem 0.8rem rgba(0, 0, 0, 0.2);
   --shadow-button-hover: 0 0.6rem 1rem rgba(0, 0, 0, 0.2);
-  --linear-gradient-normal: linear-gradient(
-    to bottom,
-    #7c3f4c,
-    #bc6b7c,
-    #7c3f4c
-  );
+  --linear-gradient-normal: linear-gradient(to right bottom, #7c3f4c, #bc6b7c);
   --linear-gradient-fighting: linear-gradient(
-    to bottom,
+    to right bottom,
     #96402a,
-    #cb735d,
-    #96402a
+    #cb735d
   );
-  --linear-gradient-flying: linear-gradient(
-    to bottom,
-    #461111,
-    #a13333,
-    #461111
-  );
-  --linear-gradient-poison: linear-gradient(
-    to bottom,
-    #5b3184,
-    #a564e3,
-    #5b3184
-  );
-  --linear-gradient-ground: linear-gradient(
-    to bottom,
-    #654008,
-    #d69638,
-    #654008
-  );
-  --linear-gradient-rock: linear-gradient(to bottom, #7e7e7e, #d3d3d3, #7e7e7e);
-  --linear-gradient-bug: linear-gradient(to bottom, #3bb039, #aaffa8, #3bb039);
-  --linear-gradient-ghost: linear-gradient(
-    to bottom,
-    #323569,
-    #787dda,
-    #454aa8
-  );
-  --linear-gradient-steel: linear-gradient(
-    to bottom,
-    #5e736c,
-    #a8a8a8,
-    #5e736c
-  );
-  --linear-gradient-fire: linear-gradient(to bottom, #e35825, #e8ae1b, #e35825);
-  --linear-gradient-water: linear-gradient(
-    to bottom,
-    #133258,
-    #1479fb,
-    #133258
-  );
-  --linear-gradient-grass: linear-gradient(
-    to bottom,
-    #7ec6c5,
-    #cae099,
-    #7ec6c5
-  );
+  --linear-gradient-flying: linear-gradient(to right bottom, #461111, #a13333);
+  --linear-gradient-poison: linear-gradient(to right bottom, #5b3184, #a564e3);
+  --linear-gradient-ground: linear-gradient(to right bottom, #654008, #d69638);
+  --linear-gradient-rock: linear-gradient(to right bottom, #7e7e7e, #d3d3d3);
+  --linear-gradient-bug: linear-gradient(to right bottom, #3bb039, #aaffa8);
+  --linear-gradient-ghost: linear-gradient(to right bottom, #323569, #787dda);
+  --linear-gradient-steel: linear-gradient(to right bottom, #5e736c, #a8a8a8);
+  --linear-gradient-fire: linear-gradient(to right bottom, #e35825, #e8ae1b);
+  --linear-gradient-water: linear-gradient(to right bottom, #133258, #1479fb);
+  --linear-gradient-grass: linear-gradient(to right bottom, #7ec6c5, #cae099);
   --linear-gradient-electric: linear-gradient(
-    to bottom,
+    to right bottom,
     #0c1395,
-    #7075d9,
-    #0c1395
+    #7075d9
   );
-  --linear-gradient-psychic: linear-gradient(
-    to bottom,
-    #003548,
-    #33687b,
-    #003548
-  );
-  --linear-gradient-ice: linear-gradient(to bottom, #64cbf5, #bdebfe, #64cbf5);
-  --linear-gradient-dragon: linear-gradient(
-    to bottom,
-    #478a93,
-    #a2bec1,
-    #478a93
-  );
-  --linear-gradient-dark: linear-gradient(to bottom, #030706, #5a5e5d, #030706);
-  --linear-gradient-fairy: linear-gradient(
-    to bottom,
-    #971b45,
-    #cd7d98,
-    #971b45
-  );
+  --linear-gradient-psychic: linear-gradient(to right bottom, #003548, #33687b);
+  --linear-gradient-ice: linear-gradient(to right bottom, #64cbf5, #bdebfe);
+  --linear-gradient-dragon: linear-gradient(to right bottom, #478a93, #a2bec1);
+  --linear-gradient-dark: linear-gradient(to right bottom, #030706, #5a5e5d);
+  --linear-gradient-fairy: linear-gradient(to right bottom, #971b45, #cd7d98);
 }
 
 * {
@@ -174,6 +118,10 @@ p {
 /*************************/
 /* GENERAL COMPONENTS */
 /*************************/
+.App {
+  min-width: 46em;
+}
+
 .container {
   padding: 0 4.8rem;
 }
@@ -219,7 +167,7 @@ p {
 }
 
 .btn:focus {
-  outline-color: var(--color-gray-lighter);
+  outline-color: var(--color-gray-darker);
 }
 
 .btn:hover {
@@ -234,7 +182,7 @@ p {
 
 .input:focus,
 .select:focus {
-  outline-color: var(--color-gray-lighter);
+  outline-color: var(--color-gray-darker);
 }
 
 .hidden {
@@ -568,6 +516,183 @@ p {
   background-image: var(--linear-gradient-fairy);
 }
 
+/****************************/
+/* POKEMON DETAIL COMPONENT */
+/****************************/
+
+/* CONTAINER AND DETAIL BOX */
+.detail-container {
+  padding: 0 9.6rem;
+  margin: 12.8rem auto;
+}
+
+.detail-box {
+  text-align: center;
+  background-color: var(--color-white);
+  box-shadow: var(--shadow-cards);
+  padding-bottom: 4.8rem;
+}
+
+/* BOX HEADING */
+.box-heading {
+  height: 25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.6rem;
+}
+
+.heading-img {
+  width: 100%;
+  height: 55%;
+  position: relative;
+  margin-bottom: 1.6rem;
+}
+
+.heading-img img {
+  height: 200%;
+  position: absolute;
+  top: -10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+.heading-title {
+  width: calc(100% - 19.2rem);
+  border-bottom: solid 1px var(--color-gray-lighter);
+}
+
+.heading-title .heading-secondary,
+.heading-title .heading-tertiary {
+  position: relative;
+  font-size: 3rem;
+  text-transform: capitalize;
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  z-index: 2;
+}
+
+/* BOX MAIN */
+/* MAIN MEASURES AND MAIN FEATURES */
+.main-measures,
+.main-features {
+  display: flex;
+  align-items: flex-start;
+  gap: 3.2rem;
+  padding: 0 9.6rem;
+}
+
+.main-measures {
+  justify-content: center;
+  margin: 3.2rem 0;
+}
+
+.main-measures p {
+  font-weight: 600;
+}
+
+.main-measures .heading-quaternary {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.main-features {
+  justify-content: space-between;
+  margin-bottom: 9.6rem;
+}
+
+.main-features .heading-tertiary {
+  font-weight: 500;
+  margin-bottom: 2.4rem;
+}
+
+.types-boxes,
+.abilities-boxes {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+}
+
+.types-boxes span,
+.abilities-boxes span {
+  font-size: 1.8rem;
+  font-weight: 600;
+  text-transform: capitalize;
+  display: inline-block;
+  min-width: 18rem;
+  box-shadow: var(--shadow-button);
+  padding: 1rem 2rem;
+}
+
+.types-boxes span {
+  color: var(--color-text-primary);
+}
+
+.abilities-boxes span {
+  color: var(--color-text-secondary);
+  background-color: var(--color-gray-lighter);
+}
+
+/* MAIN STATS */
+.main-stats {
+  text-align: left;
+  padding: 0 9.6rem;
+}
+
+.main-stats .heading-secondary {
+  font-size: 3.2rem;
+  border-bottom: solid 1px var(--color-gray-lighter);
+  padding-bottom: 1rem;
+}
+
+.stats-bars {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 2.4rem;
+  margin-top: 3.2rem;
+}
+
+/*************************/
+/* STATS BAR COMPONENT */
+/*************************/
+.stats-bar {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.stats-bar .heading-tertiary {
+  font-weight: 500;
+}
+
+.bar-value {
+  text-align: right;
+  font-weight: 500;
+  align-self: center;
+}
+
+.bar-container {
+  width: 100%;
+  height: 2.4rem;
+  grid-column: 1/-1;
+  background-color: var(--color-gray-lighter);
+  box-shadow: var(--shadow-boxes);
+}
+
+.bar-fill {
+  display: inline-block;
+  /* width: 100%; */
+  height: 100%;
+}
+
 /*************************/
 /* PAGINATION COMPONENT */
 /*************************/
@@ -612,22 +737,87 @@ p {
 .btn--pagination:disabled,
 .btn--pagination:disabled:hover {
   color: var(--color-text-secondary);
-  background-color: var(--color-gray-lighter);
+  background-color: var(--color-gray-darker);
 }
 .btn--pagination:disabled:hover {
   transform: translateY(0);
 }
 
 /**************************/
-/* QUERIES */
-/**************************/
-
-/**************************/
-/* BELOW 1024px (Portrait Tablets) */
+/* BELOW 1024px (Tablets) */
 /**************************/
 @media (max-width: 64em) {
   html {
     /* 8px / 16px */
     font-size: 50%;
+  }
+}
+
+/**************************/
+/* BELOW 960px (Small Tablets) */
+/**************************/
+@media (max-width: 60em) {
+  .cards-display {
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 2.4rem;
+    row-gap: 3.2rem;
+  }
+}
+
+/**************************/
+/* BELOW 608px (Large Phones) */
+/**************************/
+@media (max-width: 38em) {
+  .cards-display {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 3.2rem;
+    row-gap: 4.8rem;
+  }
+
+  .detail-container {
+    padding: 0 4.8rem;
+  }
+
+  .heading-title {
+    width: calc(100% - 9.6rem);
+  }
+
+  .main-features {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .main-measures,
+  .main-features,
+  .main-stats {
+    padding: 0 4.8rem;
+  }
+}
+
+/**************************/
+/* BELOW 432px (Medium Phones) */
+/**************************/
+@media (max-width: 27em) {
+  .search-boxes {
+    flex-direction: column;
+  }
+
+  .search-box,
+  .filter-box {
+    width: 100%;
+  }
+
+  .cards-display {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+/**************************/
+/* BELOW 352px (Small Phones) */
+/**************************/
+@media (max-width: 22em) {
+  html {
+    /* 7px / 16px */
+    font-size: 43.75%;
   }
 }
