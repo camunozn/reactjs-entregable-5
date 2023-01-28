@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { changeCurrentPage } from '../../store/slices/currentPage.slice';
+import { setFilteredType } from '../../store/slices/filteredType.slice';
 import Header from '../components/Header';
 import Pagination from '../components/Pagination';
 import PokemonCard from '../components/PokemonCard';
@@ -11,6 +12,7 @@ const Pokedex = () => {
   const userName = useSelector(state => state.userName);
   const currentPage = useSelector(state => state.currentPage);
   const resultsPerPage = useSelector(state => state.resultsPerPage);
+  const filteredType = useSelector(state => state.filteredType);
 
   const [pokemons, setPokemons] = useState([]);
   const [pokemonsCurrPage, setPokemonsCurrPage] = useState([]);
@@ -25,12 +27,22 @@ const Pokedex = () => {
   const allTypesUrl = 'https://pokeapi.co/api/v2/type/?offset=0&limit=20';
 
   useEffect(() => {
-    axios.get(allPokemonsUrl).then(res => {
-      const data = res.data.results;
-      setPokemons(data);
-      paginate(data, currentPage);
-    });
+    // Get pokemons data
+    if (filteredType !== '') {
+      axios.get(filteredType).then(res => {
+        const data = res.data.pokemon;
+        setPokemons(data);
+        paginate(data, currentPage);
+      });
+    } else {
+      axios.get(allPokemonsUrl).then(res => {
+        const data = res.data.results;
+        setPokemons(data);
+        paginate(data, currentPage);
+      });
+    }
 
+    // Get all types array
     axios
       .get(allTypesUrl)
       .then(res => setPokemonTypes(res.data.results.slice(0, -2)));
@@ -41,7 +53,11 @@ const Pokedex = () => {
   };
 
   const filterType = e => {
-    dispatch(changeCurrentPage(1));
+    // Save filtered type url
+    e.target.selectedIndex !== 0
+      ? dispatch(setFilteredType(e.target.value))
+      : dispatch(setFilteredType(''));
+    // Get filtered type url data
     axios.get(e.target.value).then(res => {
       const data = res.data.pokemon ? res.data.pokemon : res.data.results;
       setPokemons(data);
@@ -88,10 +104,17 @@ const Pokedex = () => {
                 </button>
               </div>
               <div className="filter-box">
-                <select className="select filter-select" onChange={filterType}>
+                <select
+                  className="select filter-select"
+                  value={filteredType}
+                  onChange={e => {
+                    dispatch(changeCurrentPage(1));
+                    filterType(e);
+                  }}
+                >
                   <option value={allPokemonsUrl}>All types</option>
                   {pokemonTypes?.map(type => (
-                    <option value={type.url} key={type.name}>
+                    <option key={type.name} value={type.url}>
                       {type.name}
                     </option>
                   ))}

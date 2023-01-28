@@ -160,6 +160,7 @@ p {
   color: var(--color-text-primary);
   background-color: var(--color-button-primary);
   box-shadow: var(--shadow-button);
+  border-radius: 2px;
   border-style: none;
   padding: 0 1.2rem;
   cursor: pointer;
@@ -178,6 +179,11 @@ p {
 .btn:active {
   transform: translateY(1px);
   box-shadow: var(--shadow-button);
+}
+
+.input,
+.select {
+  border-radius: 2px;
 }
 
 .input:focus,
@@ -226,6 +232,7 @@ p {
 
 .header .title-img {
   width: 29rem;
+  cursor: pointer;
 }
 
 .header .logo-img {
@@ -361,6 +368,7 @@ p {
   height: 40rem;
   box-shadow: var(--shadow-cards);
   padding: 3.2rem 0.8rem 0.8rem 0.8rem;
+  border-radius: 1rem;
   cursor: pointer;
   transition: all 0.4s ease;
 }
@@ -400,6 +408,7 @@ p {
 .content-data {
   height: 60%;
   background-color: var(--color-white);
+  border-radius: 0 0 1rem 1rem;
   padding: 1.6rem 0;
 }
 

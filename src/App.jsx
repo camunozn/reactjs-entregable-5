@@ -1,13 +1,15 @@
-import { HashRouter, Route, Routes } from 'react-router-dom';
+import { HashRouter, Route, Routes, ScrollRestoration } from 'react-router-dom';
 import Home from './assets/views/Home';
 import Pokedex from './assets/views/Pokedex';
 import PokemonDetail from './assets/views/PokemonDetail';
 import ProtectedRoutes from './assets/views/ProtectedRoutes';
 import './App.css';
+import ScrollToTop from './assets/components/ScrollToTop';
 
 function App() {
   return (
     <HashRouter>
+      <ScrollToTop />
       <div className="App">
         <Routes>
           <Route path="/" element={<Home />} />
