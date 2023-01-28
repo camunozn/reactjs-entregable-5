@@ -1,7 +1,7 @@
 import React from 'react';
 
 const StatsBar = ({ title, value, typeClass }) => {
-  const barFill = Math.round((value / 100) * 100);
+  const barFill = Math.round((value / 150) * 100);
 
   return (
     <div className="stats-bar">
