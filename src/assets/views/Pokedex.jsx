@@ -18,12 +18,15 @@ const Pokedex = () => {
   const [pokemonsCurrPage, setPokemonsCurrPage] = useState([]);
   const [pokemonTypes, setPokemonTypes] = useState([]);
   const [searchedPokemon, setSearchedPokemon] = useState('');
+  const [searchSuggestions, setSearchSuggestions] = useState([]);
+  const [IsSuggestionsBoxHidden, setIsSuggestionsBoxHidden] = useState(true);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const allPokemonsUrl =
     'https://pokeapi.co/api/v2/pokemon/?offset=0&limit=1279';
+
   const allTypesUrl = 'https://pokeapi.co/api/v2/type/?offset=0&limit=20';
 
   useEffect(() => {
@@ -41,17 +44,45 @@ const Pokedex = () => {
         paginate(data, currentPage);
       });
     }
-
     // Get all types array
     axios
       .get(allTypesUrl)
       .then(res => setPokemonTypes(res.data.results.slice(0, -2)));
   }, []);
 
-  const searchPokemon = inputSearch => {
-    navigate(`/pokedex/${inputSearch.toLowerCase()}`);
+  ////////////////////////////////////////////////////////////////////
+  // Search functionality
+  // Get pokemon suggestions from searched value
+  useEffect(() => {
+    if (searchedPokemon) {
+      // Create pokemons name array
+      const pokemonsNames = [];
+      pokemons.map(pokemon =>
+        pokemonsNames.push(pokemon.pokemon ? pokemon.pokemon : pokemon)
+      );
+      // Filter array with matching elements
+      const filteredArr = pokemonsNames.filter(el =>
+        el.name.includes(searchedPokemon)
+      );
+      // Set suggestion to filtered array
+      setSearchSuggestions(filteredArr);
+      // Show suggestions box
+      setIsSuggestionsBoxHidden(false);
+    } else {
+      setSearchSuggestions([]);
+      setIsSuggestionsBoxHidden(true);
+    }
+  }, [searchedPokemon]);
+
+  // Set selected pokemon on click
+  const selectPokemon = suggestion => {
+    setSearchedPokemon(suggestion);
+    setIsSuggestionsBoxHidden(true);
+    navigate(`/pokedex/${suggestion.toLowerCase()}`);
   };
 
+  ////////////////////////////////////////////////////////////////////
+  // Filter functionality
   const filterType = e => {
     // Save filtered type url
     e.target.selectedIndex !== 0
@@ -65,6 +96,8 @@ const Pokedex = () => {
     });
   };
 
+  ////////////////////////////////////////////////////////////////////
+  // Pagination functionality
   useEffect(() => {
     paginate(pokemons, currentPage);
   }, [currentPage]);
@@ -96,9 +129,23 @@ const Pokedex = () => {
                   placeholder="Search a pokemon by name or id"
                   onChange={e => setSearchedPokemon(e.target.value)}
                 />
+                <ul
+                  className={`search-suggestions ${
+                    IsSuggestionsBoxHidden ? 'hidden' : ''
+                  }`}
+                >
+                  {searchSuggestions.map(suggestion => (
+                    <li
+                      key={suggestion.name}
+                      onClick={() => selectPokemon(suggestion.name)}
+                    >
+                      {suggestion.name}
+                    </li>
+                  ))}
+                </ul>
                 <button
                   className="btn btn--search"
-                  onClick={() => searchPokemon(searchedPokemon)}
+                  onClick={() => selectPokemon(searchSuggestions[0].name)}
                 >
                   <i className="fa-solid fa-magnifying-glass"></i>
                 </button>

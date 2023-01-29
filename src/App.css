@@ -314,6 +314,7 @@ p {
 
 .search-box {
   width: 60%;
+  position: relative;
   display: flex;
   gap: 0.4rem;
 }
@@ -325,6 +326,30 @@ p {
   box-shadow: var(--shadow-boxes);
   border-style: none;
   padding: 0 1rem;
+}
+
+.search-suggestions {
+  position: absolute;
+  width: 89.6%;
+  max-height: 40vh;
+  top: 100%;
+  left: 0;
+  color: var(--color-secondary);
+  background-color: #fff;
+  padding: 1rem;
+  overflow-y: scroll;
+  z-index: 10;
+}
+
+.search-suggestions li {
+  font-size: 1.2rem;
+  list-style: none;
+  cursor: pointer;
+  padding: 1rem;
+}
+
+.search-suggestions li:hover {
+  background-color: var(--color-tertiary);
 }
 
 .btn--search {
