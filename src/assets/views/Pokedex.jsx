@@ -126,7 +126,7 @@ const Pokedex = () => {
                   className="input search-input"
                   type="text"
                   value={searchedPokemon}
-                  placeholder="Search a pokemon by name or id"
+                  placeholder="Search a pokemon by name"
                   onChange={e => setSearchedPokemon(e.target.value)}
                 />
                 <ul
