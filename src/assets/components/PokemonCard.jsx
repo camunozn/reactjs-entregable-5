@@ -38,7 +38,7 @@ const PokemonCard = ({ url }) => {
                 </span>
               ))}
             </p>
-            <h4 className="heading-quaternary">Tipo</h4>
+            <h4 className="heading-quaternary">Type</h4>
           </div>
           <div className="data-main">
             <div>
