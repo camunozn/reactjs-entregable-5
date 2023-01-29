@@ -62,7 +62,7 @@ const Pokedex = () => {
       );
       // Filter array with matching elements
       const filteredArr = pokemonsNames.filter(el =>
-        el.name.includes(searchedPokemon)
+        el.name.includes(searchedPokemon.toLowerCase())
       );
       // Set suggestion to filtered array
       setSearchSuggestions(filteredArr);
