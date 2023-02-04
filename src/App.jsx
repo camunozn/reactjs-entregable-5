@@ -1,8 +1,8 @@
 import { HashRouter, Route, Routes, ScrollRestoration } from 'react-router-dom';
-import Home from './assets/views/Home';
-import Pokedex from './assets/views/Pokedex';
-import PokemonDetail from './assets/views/PokemonDetail';
-import ProtectedRoutes from './assets/views/ProtectedRoutes';
+import Home from './assets/pages/Home';
+import Pokedex from './assets/pages/Pokedex';
+import PokemonDetail from './assets/pages/PokemonDetail';
+import ProtectedRoutes from './assets/pages/ProtectedRoutes';
 import './App.css';
 import ScrollToTop from './assets/components/ScrollToTop';
 
